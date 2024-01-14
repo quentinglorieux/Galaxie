@@ -36,8 +36,8 @@
   </template>
   
   <script setup>
-  import { ref, onMounted, computed } from 'vue';
-  import useScraping from '~/composables/useScrap';
+//   import { ref, onMounted, computed } from 'vue';
+//   import useScraping from '~/composables/useScrap';
   
   const posts = ref([]);
   const searchQuery = ref('');
@@ -79,7 +79,7 @@
   });
   
   onMounted(async () => {
-    posts.value = await useScraping('https://www.galaxie.enseignementsup-recherche.gouv.fr/ensup/ListesPostesPublies/Emplois_publies_TrieParCorps.html');
+    posts.value = await useScrap('https://www.galaxie.enseignementsup-recherche.gouv.fr/ensup/ListesPostesPublies/Emplois_publies_TrieParCorps.html');
   });
   </script>
   
