@@ -2,7 +2,7 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
 
-export default async function useScraping(url) {
+export default async function useScrap(url) {
   const response = await axios.get(url);
   const $ = cheerio.load(response.data);
 
