@@ -1,6 +1,7 @@
 <template>
     <div class="container mx-auto mt-8 p-8 bg-gray-100">
       <h1 class="text-2xl font-semibold mb-6">List of Teaching-Research Positions</h1>
+      {{ loading }}
   
       <!-- Column Selection, Search Bar, and Corps Filter on the same line -->
       <div class="flex items-center gap-4 mb-4">
@@ -78,9 +79,15 @@
     );
   });
   
-  onMounted(async () => {
+const loading = ref(true);
+
+onMounted(async () => {
+  try {
     posts.value = await useScrap('https://www.galaxie.enseignementsup-recherche.gouv.fr/ensup/ListesPostesPublies/Emplois_publies_TrieParCorps.html');
-  });
+  } finally {
+    loading.value = false;
+  }
+});
   </script>
   
   <style scoped>
